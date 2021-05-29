@@ -1,0 +1,17 @@
+@import 'theme-styles';
+@import 'mixins';
+
+.BookshelvesPage {
+  .BookshelvesPage-createCard {
+    text-align: center;
+  }
+
+  .BookshelvesPage-bookshelfCard {
+    min-height: 240px;
+    @include elevation-high();
+
+    a:hover {
+      text-decoration: none !important;
+    }
+  }
+}

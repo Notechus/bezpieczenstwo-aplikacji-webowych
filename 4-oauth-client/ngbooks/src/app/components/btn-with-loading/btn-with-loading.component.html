@@ -1,0 +1,5 @@
+<button mat-raised-button *ngIf="!loading" class="BtnWithLoading" [color]="color">{{ label }}</button>
+<button mat-raised-button *ngIf="loading" class="BtnWithLoading" [color]="color" disabled>
+  {{ label }}
+  <mat-icon><mat-spinner diameter="20"> </mat-spinner></mat-icon>
+</button>

@@ -1,0 +1,44 @@
+server:
+  port: 8090
+  servlet:
+    session:
+      cookie:
+        name: CLIENTSESSIONID
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: ${GITHUB_CLIENT_ID}
+            clientSecret: ${GITHUB_CLIENT_SECRET}
+          okta:
+            client-id: ${OKTA_CLIENT_ID}
+            client-secret: ${OKTA_CLIENT_SECRET}
+          custom:
+            client-id: my-client
+            client-secret: secret
+            scope: read
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8090/login/oauth2/code/custom
+        provider:
+          okta:
+            authorization-uri: https://${OKTA_DOMAIN}/oauth2/default/v1/authorize
+            token-uri: https://${OKTA_DOMAIN}/oauth2/default/v1/token
+            user-info-uri: https://${OKTA_DOMAIN}/oauth2/default/v1/userinfo
+            jwk-set-uri: https://${OKTA_DOMAIN}/oauth2/default/v1/keys
+          custom:
+            authorization-uri: http://localhost:8080/oauth/authorize
+            token-uri: http://localhost:8080/oauth/token
+            user-info-uri: http://localhost:8080/auth/userinfo
+            user-name-attribute: username
+logging:
+  level:
+    org.springframework: DEBUG
+    org.springframework.security: TRACE
+
+
+books:
+  api:
+    url: http://localhost:8081/api/books

@@ -1,0 +1,22 @@
+@import 'mixins';
+@import 'theme-styles';
+
+.Login {
+  .Login-card {
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.3);
+    margin: auto !important;
+    text-align: center;
+  }
+
+  mat-form-field {
+    @include form-full-width();
+  }
+
+  .Login-formDivider {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .Login-cardImage {
+  }
+}

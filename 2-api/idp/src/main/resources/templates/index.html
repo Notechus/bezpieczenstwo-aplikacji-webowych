@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <p class="mt-5">
+        Welcome! Please proceed to the <a th:href="@{/app/home}">app</a>
+    </p>
+</div>
+</body>
+</html>

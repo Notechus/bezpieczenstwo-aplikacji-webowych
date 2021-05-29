@@ -1,0 +1,10 @@
+@import 'ngbooks-theme';
+
+.Navbar {
+  background-color: $navbar-color;
+  display: flex;
+
+  .Navbar-spacer {
+    flex: 1 1 auto;
+  }
+}

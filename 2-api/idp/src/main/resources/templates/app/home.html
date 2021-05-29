@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+<head>
+    <title>Home</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <p class="mt-5">
+        Welcome <span>user</span>. You can see your articles <a th:href="@{/app/articles}">here</a>
+    </p>
+</div>
+</body>
+</html>

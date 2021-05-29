@@ -1,0 +1,59 @@
+<div class="BookshelvesPage">
+  <ng-container *ngIf="pageLoading"> <page-loader></page-loader> </ng-container>
+  <ng-container *ngIf="!pageLoading">
+    <ng-container *ngIf="!bookshelves || bookshelves.length == 0">
+      <mat-card class="BookshelvesPage-createCard">
+        <mat-card-title> <p class="mat-display-1">Looks like it's empty here...</p> </mat-card-title>
+        <mat-card-content>
+          <p class="mat-display-1">You can start with creating a new bookshelf</p>
+          <div class="mx-auto col-6">
+            <form>
+              <div class="row mt-5">
+                <div class="col-6">
+                  <mat-form-field class="u-formField--fullWidth">
+                    <mat-label>Bookshelf name</mat-label>
+                    <input matInput type="text" id="name" [(ngModel)]="name" name="name" />
+                  </mat-form-field>
+                </div>
+                <div class="col-4">
+                  <btn-with-loading
+                    label="Create"
+                    (click)="create()"
+                    [loading]="loading"
+                    color="primary"
+                  ></btn-with-loading>
+                </div>
+              </div>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="bookshelves && bookshelves.length > 0">
+      <div class="row">
+        <div class="col-6"><p class="mat-display-2">Your bookshelves</p></div>
+        <div class="col-2 ml-auto">
+          <button mat-raised-button (click)="openDialog()" color="primary">Create new</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 pb-3" *ngFor="let shelf of bookshelves">
+          <mat-card class="BookshelvesPage-bookshelfCard">
+            <div class="row">
+              <mat-card-title class="col-8">
+                <a mat-button [routerLink]="'/books/bookshelves/' + shelf.id">{{ shelf.title }}</a>
+              </mat-card-title>
+              <div class="col-2 ml-auto">
+                <button mat-icon-button (click)="quickUpdateAccess(shelf)">
+                  <mat-icon>{{ shelf.access == BookshelfAccessType.PRIVATE ? 'lock' : 'lock_open' }}</mat-icon>
+                </button>
+              </div>
+            </div>
+            <mat-card-subtitle>{{ shelf.volumeCount }} volumes</mat-card-subtitle>
+            <mat-card-content> {{ shelf.description ? shelf.description : NO_DESCRIPTION_MSG }} </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

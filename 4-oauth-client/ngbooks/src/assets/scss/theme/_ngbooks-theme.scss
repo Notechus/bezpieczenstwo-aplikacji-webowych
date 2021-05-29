@@ -1,0 +1,31 @@
+@import '~@angular/material/theming';
+@import 'colors';
+
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$ngbooks-primary: mat-palette($primary-color);
+$ngbooks-accent: mat-palette($secondary-color, A200, A100, A400);
+$ngbooks-warn: mat-palette($mat-red);
+$ngbooks-theme: mat-light-theme($ngbooks-primary, $ngbooks-accent, $ngbooks-warn);
+
+@include angular-material-theme($ngbooks-theme);
+
+@import '~font-awesome/css/font-awesome.css';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-social/bootstrap-social.css';
+
+@import 'mixins';
+@import 'theme-styles';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

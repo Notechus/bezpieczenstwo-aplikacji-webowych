@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="~{layout}">
+
+<head>
+    <title>Home</title>
+</head>
+<body>
+<div class="container" style="padding-top: 60px;" layout:fragment="content">
+    <div sec:authorize="isAuthenticated()">
+        Logged in as: <span sec:authentication="name"></span>
+    </div>
+</div>
+</body>
+</html>

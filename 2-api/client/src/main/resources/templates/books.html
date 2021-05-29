@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="~{layout}">
+
+<head>
+    <title>Books</title>
+</head>
+<body>
+<div class="container" style="padding-top: 60px;" layout:fragment="content">
+    <div sec:authorize="isAuthenticated()">
+        <div th:if="${books != null}">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book, iterStat : ${books}">
+                    <th scope="row" th:text="${iterStat.index+1}"></th>
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.author}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${books == null}" class="justify-content-center">
+            <p>You've got no books</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

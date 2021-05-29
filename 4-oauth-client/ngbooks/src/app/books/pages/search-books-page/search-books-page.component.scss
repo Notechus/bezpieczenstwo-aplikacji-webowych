@@ -1,0 +1,19 @@
+@import 'mixins';
+@import 'theme-styles';
+
+.SearchBooksPage {
+  .SearchBooksPage-fullPageCard {
+    margin: auto !important;
+    text-align: center;
+    @include elevation-high();
+  }
+
+  .SearchBooksPage-searchWithResultsCard {
+    margin: auto !important;
+    @include elevation-high();
+  }
+
+  .SearchBooksPage-resultsTable {
+    margin-top: 0.9rem;
+  }
+}

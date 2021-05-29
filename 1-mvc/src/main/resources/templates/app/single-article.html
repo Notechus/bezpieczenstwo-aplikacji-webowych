@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="~{layout}">
+<head>
+    <title>Article</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card mb-3" style="margin-top: 60px">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Image</title>
+            <rect width="100%" height="100%" fill="#868e96"></rect>
+            <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text>
+        </svg>
+        <div class="card-body">
+            <div class="d-flex flex-row justify-content-between mb-4">
+                <div class="p-2"><h5 class="card-title" th:text="${article.title}"></h5></div>
+                <div class="p-2 dropdown">
+                    <button class="btn" type="button" id="actionsMenu"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="actionsMenu">
+                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="card-text" th:text="${article.content}"></p>
+
+            <a href="#" class="card-link">Like</a>
+            <a href="#" class="card-link">Comment</a>
+            <p class="card-text"><small class="text-muted">Last updated 3 minutes ago</small></p>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<ngx-datatable
+  [rows]="rows"
+  [columnMode]="ColumnMode.flex"
+  [virtualization]="true"
+  [limit]="limit"
+  [headerHeight]="40"
+  [footerHeight]="50"
+  rowHeight="auto"
+  class="material BookshelfVolumeList"
+>
+  <ngx-datatable-column name="Cover" [flexGrow]="2">
+    <ng-template let-column="column" ngx-datatable-header-template></ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <img [src]="row.imageLinks && row.imageLinks.smallThumbnail" [alt]="row.title + ' cover'" />
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Title" [flexGrow]="2">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      <span>{{ column.name }}</span>
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <div class="text-center align-middle">
+        <i>{{ row.title }}</i>
+        <p class="font-weight-bold">by</p>
+        <span class="font-weight-light">{{ row.authors && row.authors[0] }}</span>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Description" [flexGrow]="6">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      <span>{{ column.name }}</span>
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <p class="">{{ row.description }}</p>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

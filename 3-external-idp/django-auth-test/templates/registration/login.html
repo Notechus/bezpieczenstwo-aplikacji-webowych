@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+{% block head %}
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCUmzT2dQfMN029XT1KTvPraUtazB4nCnk",
+            authDomain: "auth-test-44513.firebaseapp.com",
+            databaseURL: "https://auth-test-44513.firebaseio.com",
+            projectId: "auth-test-44513",
+            storageBucket: "auth-test-44513.appspot.com",
+            messagingSenderId: "110559852574",
+            appId: "1:110559852574:web:801271439a4391bf0e960f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        const uiConfig = {
+            callbacks: {
+                signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+                    const user = authResult.user;
+                    console.log('cookies are', document.cookie)
+                    if (user) {
+                        user.getIdToken()
+                            .then(token => window.location.replace(`/auth/continue_login?token=${token}`));
+                    }
+                    return false;
+                },
+                uiShown: function () {
+                    // The widget is rendered.
+                    // Hide the loader.
+                    document.getElementById('loader').style.display = 'none';
+                }
+            },
+            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+            signInFlow: 'redirect',
+            signInSuccessUrl: '/auth/continue_login',
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            ]
+        };
+
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h2>Login</h2>
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<div class="BookshelfItemPage">
+  <ng-container *ngIf="pageLoading"> <page-loader></page-loader> </ng-container>
+  <ng-container *ngIf="!pageLoading">
+    <div class="row">
+      <div class="col">
+        <mat-card class="BookshelfItemPage-detailsCard">
+          <mat-card-title-group>
+            <mat-card-title>{{ bookshelf && bookshelf.title }}</mat-card-title>
+            <mat-card-subtitle>Details</mat-card-subtitle>
+          </mat-card-title-group>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-6">
+                <p>{{ bookshelf && bookshelf.description }}</p>
+              </div>
+              <div class="col-6">XYZ</div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div class="row BookshelfItemPage-volumeFilters">
+      <div class="col-4"><h2 class="ml-2">Volumes</h2></div>
+      <div class="col-4 ml-auto">
+        <mat-form-field class="u-formField--fullWidth">
+          <mat-label>Type a title or author</mat-label>
+          <input matInput [(ngModel)]="searchTerm" (keyup)="filterBooks()" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row BookshelfItemPage-volumeList">
+      <div class="col"><app-bookshelf-volume-list [rows]="filteredBooks"></app-bookshelf-volume-list></div>
+    </div>
+  </ng-container>
+</div>

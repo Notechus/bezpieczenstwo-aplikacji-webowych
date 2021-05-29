@@ -1,0 +1,48 @@
+<div class="row Login">
+  <mat-card class="col-xl-4 col-lg-6 col-md-5 col-sm-6 col-xs Login-card">
+    <app-loading-overlay [visible]="isProcessing" [style]="'width: 4rem; height: 4rem'"> </app-loading-overlay>
+    <mat-card-title>Sign In</mat-card-title>
+    <img mat-card-image src="assets/img/books-login-img.jpg" class="Login-cardImage" alt="Books img" />
+    <mat-card-content>
+      <app-social-login-btn [icon]="'fa-google'" [text]="'Sign in with Google'" [url]="'http://localhost:4200/home'">
+      </app-social-login-btn>
+      <h3>or</h3>
+      <form>
+        <mat-form-field class="u-formField--fullWidth">
+          <mat-label>Email address</mat-label>
+          <input matInput type="text" id="email" [(ngModel)]="email" name="email" />
+          <button
+            mat-button
+            *ngIf="isEmpty(email)"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="clear('email')"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field class="u-formField--fullWidth">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" id="password" [(ngModel)]="password" name="password" />
+          <button
+            mat-button
+            *ngIf="isEmpty(password)"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="clear('password')"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <button mat-raised-button (click)="login()" color="primary">SIGN IN</button>
+      </form>
+      <hr />
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary">Create account</button>
+      <button mat-button color="primary">Forgot password?</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,18 @@
+.SocialLoginBtn {
+  max-width: 200px;
+  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.7rem;
+}
+
+.SocialLoginBtn:hover {
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.SocialLoginBtn-icon {
+  padding-left: 0.1rem;
+}
+
+.SocialLoginBtn-text {
+  margin-left: 1.5rem;
+}

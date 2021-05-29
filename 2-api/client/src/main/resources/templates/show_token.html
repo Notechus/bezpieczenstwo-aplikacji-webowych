@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="~{layout}">
+
+<head>
+    <title>Show Token</title>
+</head>
+<body>
+<div class="container" style="padding-top: 60px;" layout:fragment="content">
+    <div sec:authorize="!isAuthenticated()">
+        <ul class="list-group">
+            <li class="list-group-item">
+                With GitHub: <a href="/oauth2/authorization/github">click here</a>
+            </li>
+            <li class="list-group-item">
+                With Okta: <a href="/oauth2/authorization/okta">click here</a>
+            </li>
+            <li class="list-group-item">
+                With MyIDP: <a href="/oauth2/authorization/custom">click here</a>
+            </li>
+        </ul>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <p>Access Token: <span th:text="${accessToken}"></span></p>
+        <p>Refresh Token: <span th:text="${refreshToken}"></span></p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<nav ngbNav class="navbar navbar-expand-md navbar-expand-sm navbar-expand-xs fixed-top navbar-dark Navbar">
+  <a class="navbar-brand" href="#">NGBooks</a>
+  <button
+    class="navbar-toggler hidden-sm-up"
+    type="button"
+    (click)="isCollapsed = !isCollapsed"
+    data-target="#navbarsDefault"
+    aria-controls="navbarsDefault"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="appNavbar">
+    <ul ngbNav [(activeId)]="activeId" class="navbar-nav">
+      <li class="nav-item" ngbDropdown [ngbNavItem]="1">
+        <a class="nav-link" id="books-dropdown" ngbDropdownToggle>Books</a>
+        <div ngbDropdownMenu aria-labelledby="books-dropdown" class="dropdown-menu dropdown-menu-left">
+          <a ngbDropdownItem *ngFor="let link of booksLinks" [routerLink]="link.path">{{ link.label }}</a>
+        </div>
+      </li>
+      <li class="nav-item" [ngbNavItem]="2"><a ngbNavLink [routerLink]="'authors'">Authors</a></li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" ngbDropdown>
+        <a class="nav-link" id="user-dropdown" ngbDropdownToggle>User</a>
+        <div ngbDropdownMenu aria-labelledby="user-dropdown" class="dropdown-menu dropdown-menu-right">
+          <a ngbDropdownItem *ngFor="let link of userLinks" [routerLink]="link.path"> {{ link.label }} </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--<mat-toolbar class="Navbar">-->
+<!--  <span class="pr-2">NGBooks</span> <button mat-button [matMenuTriggerFor]="booksMenu">Books</button>-->
+<!--  <mat-menu #booksMenu="matMenu">-->
+<!--    <button mat-menu-item *ngFor="let link of booksLinks" [routerLink]="link.path">{{ link.label }}</button>-->
+<!--  </mat-menu>-->
+<!--  <button mat-button>Authors</button> <span class="Navbar-spacer"></span>-->
+<!--  <button mat-button [matMenuTriggerFor]="userMenu">User</button>-->
+<!--  <mat-menu #userMenu="matMenu">-->
+<!--    <button mat-menu-item *ngFor="let link of userLinks" [routerLink]="link.path">{{ link.label }}</button>-->
+<!--  </mat-menu>-->
+<!--</mat-toolbar>-->

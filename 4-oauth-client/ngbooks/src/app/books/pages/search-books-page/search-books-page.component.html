@@ -1,0 +1,57 @@
+<div class="SearchBooksPage">
+  <ng-container *ngIf="!searchResults">
+    <mat-card class="SearchBooksPage-fullPageCard">
+      <mat-card-title> Search for books </mat-card-title>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-6 mx-auto">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="u-formField--fullWidth">
+                  <mat-label>Type a book title</mat-label>
+                  <input matInput type="text" id="searchTerm" [(ngModel)]="searchTerm" name="searchTerm" />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 mx-auto">
+                <btn-with-loading
+                  (click)="search()"
+                  label="Search"
+                  [loading]="loading"
+                  color="primary"
+                ></btn-with-loading>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  <ng-container *ngIf="searchResults">
+    <mat-card class="SearchBooksPage-searchWithResultsCard">
+      <mat-card-title>Books results</mat-card-title>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-4">
+            <mat-form-field class="u-formField--fullWidth">
+              <mat-label>Type a book title</mat-label>
+              <input matInput type="text" id="searchTerm" [(ngModel)]="searchTerm" name="searchTerm" />
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <btn-with-loading (click)="search()" label="Search" [loading]="loading" color="primary"></btn-with-loading>
+          </div>
+          <div class="col-2 mat-body-2 text-center ml-auto">
+            <b>{{ searchResults.length }}</b> of <b>{{ resultCount }}</b> results
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <div class="row SearchBooksPage-resultsTable">
+      <div class="col">
+        <app-books-table (addClick)="openAddModal($event)" [rows]="searchResults" limit="40"></app-books-table>
+      </div>
+    </div>
+  </ng-container>
+</div>
