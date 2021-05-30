@@ -9,5 +9,5 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://dev-736968.okta.com/oauth2/default
-          jwk-set-uri: https://dev-736968.okta.com/oauth2/default/v1/keys
+          issuer-uri: https://${OKTA_DOMAIN}/oauth2/default
+          jwk-set-uri: https://${OKTA_DOMAIN}/oauth2/default/v1/keys

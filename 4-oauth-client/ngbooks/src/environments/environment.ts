@@ -2,10 +2,9 @@ export const environment = {
   production: false,
   api_url: 'http://localhost:8080',
   firebaseConfig: {
-    apiKey: 'AIzaSyCUmzT2dQfMN029XT1KTvPraUtazB4nCnk',
-    authDomain: 'auth-test-44513.firebaseapp.com',
-    projectId: 'auth-test-44513',
-    // appId: "1:110559852574:web:801271439a4391bf0e960f"
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
     scopes: ['email', 'profile', 'https://www.googleapis.com/auth/books']
   }
 };
