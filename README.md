@@ -18,3 +18,12 @@ Bonus: Przykład integracji backendu Firebase Auth z systemem sesji Django
 
 ### 4-OAUTH-CLIENT
 Bonus: Przykład aplikacji w angularze, która jest bezpośrednio związana z backendem Firebase Auth oraz Firebase Datastore
+
+### 5-REACT-CLIENT
+Klient w technologii ReactJS, który komunikuje się z API w projekcie 7-auth0-example-express oraz posiada połączenie z backendem Auth0
+
+### 6-AUTH0-EXAMPLE-REACT
+Projekt, który był robiony w trakcie zajęć
+
+### 7-AUTH0-EXAMPLE-EXPRESS
+API, które jest zabezpieczone tokenem JWT oraz dostarcza danych klientowi z punktu 5
